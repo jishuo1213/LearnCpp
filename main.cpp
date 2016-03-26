@@ -1,30 +1,12 @@
 #include <iostream>
-#include <vector>
-#include <list>
-#include <array>
-#include <forward_list>
-#include <string>
-#include <algorithm>
-#include <functional>
-#include <map>
-#include <memory>
 
 
 using namespace std;
 
-typedef unique_ptr<int> IntP;
 
 int main()
 {
-    
-    
 
-    allocator<string> alloc;
-    auto const p = alloc.allocate(10);
-
-    auto q = p;
-    string s;
-    
     /*    auto p = new int();
         auto sp = make_shared<int>();
 
