@@ -9,10 +9,6 @@
 #include <map>
 #include <memory>
 
-#include "headers/seq_container.h"
-#include "headers/gen_algorithm.h"
-#include "headers/io.h"
-#include "headers/dynamic_memory.h"
 
 using namespace std;
 
