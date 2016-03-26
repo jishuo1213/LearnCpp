@@ -1,0 +1,4 @@
+Had we neglected to increment pos, the loop would never terminate. To see why,
+consider what would happen if we didn’t do the increment. On the second trip through
+the loop we start looking at the character indexed by pos. That character would be a
+number, so find_first_of would (repeatedly) returns pos!

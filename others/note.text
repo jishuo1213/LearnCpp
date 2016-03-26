@@ -1,0 +1,8 @@
+We must use the constructor initializer list to provide values for members that
+are const, reference, or of a class type that does not have a default
+constructor
+发送到发送到发送到
+
+const 引用和没有默认构造函数的类类型必须使用初始化列表的形式初始化
+
+改函数别忘了改声明
