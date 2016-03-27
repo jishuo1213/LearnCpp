@@ -3,23 +3,26 @@
 
 #include <vector>
 #include <map>
+#include <set>
 #include <fstream>
-
-#include "QueryResult.h"
+#include <memory>
 
 using namespace std;
 
-class TextQuery
-{
-    friend class QueryResult;
+class QueryResult;
+
+class TextQuery {
 public:
-    TextQuery();
+
+    TextQuery() = default;
+
     TextQuery(ifstream &in);
-    
-    Query(const string &s);
+
+    QueryResult &Query(const string &s);
+
 private:
-    vector<string> file_lines;
-    map<int,string> query_result;
+    shared_ptr<vector<string>> file_lines;
+    map<string, shared_ptr<set<size_t >>> word_lines;
 };
 
 #endif // TEXTQUERY_H
