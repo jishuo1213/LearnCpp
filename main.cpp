@@ -5,11 +5,16 @@
 using namespace std;
 
 int main() {
-    HasPtr first, second = first, third = second;
+    HasPtr temp("aaa");
+    Print(cout,temp);
+    HasPtr first;
+    Print(cout,first);
+    first = temp;
+    Print(cout,first);
 
-    Print(cout, first);
-    Print(cout, second);
-    Print(cout, third);
+//    Print(cout, first);
+//    Print(cout, second);
+//    Print(cout, third);
 
     /*    auto p = new int();
         auto sp = make_shared<int>();
