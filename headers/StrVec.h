@@ -85,7 +85,17 @@ void StrVec::free() {
 }
 
 void StrVec::reallocate() {
-
+    auto new_capacity = size() ? 2 * size() : 1;
+    auto new_data = alloc.allocate(new_capacity);
+    auto dest = new_data;
+    auto elem = element;
+    for (size_t i = 0; i != size(); ++i) {
+        alloc.construct(dest++, move(*elem++));
+    }
+    free();
+    element = new_data;
+    first_free = dest;
+    cap = element + new_capacity;
 }
 
 pair<string *, string *> StrVec::alloc_n_copy(const string *b, const string *e) {
@@ -104,7 +114,7 @@ StrVec::~StrVec() {
 }
 
 StrVec &StrVec::operator=(StrVec &rhs) {
-    auto res = alloc_n_copy(rhs.begin(),rhs.end());
+    auto res = alloc_n_copy(rhs.begin(), rhs.end());
     free();
     element = res.first;
     first_free = cap = res.second;
