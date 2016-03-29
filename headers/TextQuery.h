@@ -18,7 +18,7 @@ public:
 
     TextQuery(ifstream &in);
 
-    QueryResult &Query(const string &s);
+    const QueryResult &Query(const string &s);
 
 private:
     shared_ptr<vector<string>> file_lines;

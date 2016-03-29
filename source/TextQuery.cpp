@@ -27,7 +27,7 @@ TextQuery::TextQuery(ifstream &in) {
     }
 }
 
-QueryResult &TextQuery::Query(const string &s) {
+const QueryResult &TextQuery::Query(const string &s) {
     static shared_ptr<set<size_t >> no_data(new set<size_t>);
     auto loc = word_lines.find(s);
     if (loc == word_lines.end()) {
