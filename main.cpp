@@ -1,14 +1,19 @@
 #include <iostream>
 #include <fstream>
+#include <windows.h>
 
-#include "./headers/TextQuery.h"
-#include "./headers/QueryResult.h"
+#include "headers/TextQuery.h"
+#include "headers/QueryResult.h"
 
 using namespace std;
 
 int main() {
 
-    ifstream in("./others/input");
+    char chpath[MAX_PATH];
+    GetModuleFileName(NULL,(LPSTR)chpath,sizeof(chpath));
+    std::cout<<chpath<<std::endl;
+
+    ifstream in("input");
     TextQuery text_query(in);
     const auto res = text_query.Query("we");
 

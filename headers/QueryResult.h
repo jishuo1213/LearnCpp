@@ -1,14 +1,15 @@
-#ifndef QUERY_RESULT_H
-#define QUERY_RESULT_H
+//
+// Created by Administrator on 2016/3/31.
+//
+
+#ifndef LEARNCPP_QUERYRESULT_H
+#define LEARNCPP_QUERYRESULT_H
 
 #include <string>
 #include <memory>
 #include <set>
 #include <iostream>
-#include <vector>
 #include "StrVec.h"
-
-using namespace std;
 
 class QueryResult {
     friend ostream &PrintResult(ostream &os, const QueryResult &result);
@@ -25,14 +26,4 @@ private:
     shared_ptr<StrVec> file;
 };
 
-ostream &PrintResult(ostream &os, const QueryResult &result) {
-    size_t time = result.lines->size();
-    os << result.word << " occurs " << result.lines->size() << " " << (time > 1 ? "time" : "times") << endl;
-    for (auto num : *result.lines) {
-        os << "\t (line " << num + 1 << " )" << *(result.file->begin() + num) << endl;
-    }
-    return os;
-}
-
-
-#endif //
+#endif //LEARNCPP_QUERYRESULT_H
