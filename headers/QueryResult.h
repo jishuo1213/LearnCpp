@@ -1,11 +1,12 @@
-#ifndef QUERYRESULT_H
-#define QUERYRESULT_H
+#ifndef QUERY_RESULT_H
+#define QUERY_RESULT_H
 
 #include <string>
 #include <memory>
 #include <set>
 #include <iostream>
 #include <vector>
+#include "StrVec.h"
 
 using namespace std;
 
@@ -15,13 +16,13 @@ class QueryResult {
 public:
     QueryResult() = default;
 
-    QueryResult(string s, shared_ptr<set<size_t>> result_lines, shared_ptr<vector<string>> file_lines) :
+    QueryResult(string s, shared_ptr<set<size_t>> result_lines, shared_ptr<StrVec> file_lines) :
             word(s), lines(result_lines), file(file_lines) { };
 
 private:
     string word;
     shared_ptr<set<size_t >> lines;
-    shared_ptr<vector<string>> file;
+    shared_ptr<StrVec> file;
 };
 
 ostream &PrintResult(ostream &os, const QueryResult &result) {
@@ -34,4 +35,4 @@ ostream &PrintResult(ostream &os, const QueryResult &result) {
 }
 
 
-#endif // QUERYRESULT_H
+#endif //

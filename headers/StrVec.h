@@ -1,21 +1,28 @@
 //
 // Created by fan on 16-3-29.
 //
-
 #ifndef LEARNCPP_STRVEC_H
 #define LEARNCPP_STRVEC_H
 
 #include <iostream>
 #include <memory>
 #include <string>
+#include <utility>
+#include <algorithm>
 
 using namespace std;
 
 class StrVec {
 
 public:
-
     StrVec() : element(nullptr), first_free(nullptr), cap(nullptr) { }
+
+    StrVec(initializer_list<string> sl) {
+        auto first = alloc.allocate(sl.size() * 2);
+        element = first;
+        first_free = uninitialized_copy(sl.begin(), sl.end(), first);
+        cap = first_free + sl.size();
+    }
 
     StrVec(const StrVec &rhs);
 
@@ -77,10 +84,12 @@ string *StrVec::end() const {
 
 void StrVec::free() {
     if (element) {
-        for (auto p = first_free; p != element;) {
+/*        for (auto p = first_free; p != element;) {
             alloc.destroy(--p);
         }
-        alloc.deallocate(first_free, cap - element);
+        alloc.deallocate(first_free, cap - element);*/
+        for_each(element, first_free, [this](string &p) { this->alloc.destroy(&p); });
+        alloc.deallocate(element, cap - element);
     }
 }
 

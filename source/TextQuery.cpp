@@ -3,6 +3,7 @@
 #include <set>
 #include <sstream>
 #include <cassert>
+
 #include "../headers/TextQuery.h"
 #include "../headers/QueryResult.h"
 

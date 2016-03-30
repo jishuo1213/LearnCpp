@@ -6,7 +6,7 @@
 
 using namespace std;
 
-extern bool CompareStringLength(string& word);
+extern bool CompareStringLength(const string& word);
 extern size_t CountBiggerWords(vector<string> words_vector, size_t length);
 extern bool CheckSize(const string& str, int num);
 extern void ReadTextFile(const string& file_name, vector<string>& words_vector);

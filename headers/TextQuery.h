@@ -1,11 +1,12 @@
-#ifndef TEXTQUERY_H
-#define TEXTQUERY_H
+#ifndef TEXT_QUERY_H
+#define TEXT_QUERY_H
 
 #include <vector>
 #include <map>
 #include <set>
 #include <fstream>
 #include <memory>
+#include "StrVec.h"
 
 using namespace std;
 
@@ -21,8 +22,8 @@ public:
     const QueryResult &Query(const string &s);
 
 private:
-    shared_ptr<vector<string>> file_lines;
+    shared_ptr<StrVec> file_lines;
     map<string, shared_ptr<set<size_t >>> word_lines;
 };
 
-#endif // TEXTQUERY_H
+#endif //

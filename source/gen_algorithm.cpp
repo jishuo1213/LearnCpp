@@ -7,7 +7,7 @@
 
 using namespace std;
 
-bool CompareStringLength(string& word)
+bool CompareStringLength(const string& word)
 {
     return word.length() >= 5;
 }

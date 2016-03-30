@@ -1,16 +1,28 @@
 #include <iostream>
+#include <fstream>
 
-#include "headers/HasPtr.h"
+#include "./headers/TextQuery.h"
+#include "./headers/QueryResult.h"
 
 using namespace std;
 
 int main() {
-    HasPtr temp("aaa");
+
+    ifstream in("./others/input");
+    TextQuery text_query(in);
+    const auto res = text_query.Query("we");
+
+    PrintResult(cout, res);
+//    vector<string> temp = {"a", "b", "c", "d"};
+
+//    for_each(temp.begin(), temp.end(), [](string &p) { cout << p << endl; });
+
+/*    HasPtr temp("aaa");
     Print(cout,temp);
     HasPtr first;
     Print(cout,first);
     first = temp;
-    Print(cout,first);
+    Print(cout,first);*/
 
 //    Print(cout, first);
 //    Print(cout, second);
