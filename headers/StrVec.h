@@ -26,9 +26,15 @@ public:
         cap = first_free + sl.size();
     }
 
+    StrVec(StrVec &&s) noexcept : element(s.element), first_free(s.first_free), cap(s.cap) {
+        s.element = s.first_free = s.cap = nullptr;
+    }
+
     StrVec(const StrVec &rhs);
 
     StrVec &operator=(StrVec &rhs);
+
+    StrVec &operator=(StrVec &&rhs);
 
     ~StrVec();
 

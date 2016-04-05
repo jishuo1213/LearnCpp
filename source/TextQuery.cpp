@@ -5,7 +5,6 @@
 #include <fstream>
 #include <set>
 #include <sstream>
-#include <cassert>
 
 #include "../headers/TextQuery.h"
 #include "../headers/QueryResult.h"
@@ -35,20 +34,20 @@ TextQuery::TextQuery(ifstream &in) : file_lines(new StrVec()) {
     cout << file_lines->size() << endl;
 }
 
-const QueryResult TextQuery::Query(const string &s) {
+QueryResult &&TextQuery::Query(const string &s) {
     cout << "Query" << endl;
     static shared_ptr<set<size_t >> no_data(new set<size_t>);
     auto loc = word_lines.find(s);
     if (loc == word_lines.end()) {
-        QueryResult result(s, no_data, file_lines);
-        return result;
+//        QueryResult result(s, no_data, file_lines);
+        return {s, no_data, file_lines};
     } else {
-        QueryResult result(s, loc->second, file_lines);
-        return result;
+//        QueryResult result(s, loc->second, file_lines);
+        return {s, loc->second, file_lines};
     }
 }
 
-ostream &PrintResult(ostream &os, const QueryResult &result) {
+ostream &PrintResult(ostream &os, const QueryResult &&result) {
     cout << "PrintResult" << endl;
     size_t time = result.lines->size();
     cout << "PrintResult" << time << endl;

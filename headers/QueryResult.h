@@ -12,7 +12,7 @@
 #include "StrVec.h"
 
 class QueryResult {
-    friend ostream &PrintResult(ostream &os, const QueryResult &result);
+    friend ostream &PrintResult(ostream &os, const QueryResult &&result);
 
 public:
     QueryResult() = default;

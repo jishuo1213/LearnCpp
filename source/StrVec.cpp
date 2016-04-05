@@ -78,3 +78,15 @@ StrVec &StrVec::operator=(StrVec &rhs) {
     first_free = cap = res.second;
     return *this;
 }
+
+StrVec &StrVec::operator=(StrVec &&rhs) {
+    if (this != &rhs) {
+        free();
+        element = rhs.element;
+        first_free = rhs.first_free;
+        cap = rhs.cap;
+        rhs.first_free = rhs.element = rhs.cap = nullptr;
+    }
+    return *this;
+}
+

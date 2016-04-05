@@ -1,23 +1,19 @@
 #include <iostream>
-#include <fstream>
-#include <windows.h>
+#include <string>
+#include <vector>
+#include <utility>
 
-#include "headers/TextQuery.h"
-#include "headers/QueryResult.h"
 
 using namespace std;
 
+
 int main() {
 
-    char chpath[MAX_PATH];
-    GetModuleFileName(NULL,(LPSTR)chpath,sizeof(chpath));
-    std::cout<<chpath<<std::endl;
+//    ifstream in("/home/fan/WorkSpace/clion/LearnCpp/others/input");
+//    TextQuery text_query(in);
+//    QueryResult &&res = text_query.Query("we");
 
-    ifstream in("input");
-    TextQuery text_query(in);
-    const auto res = text_query.Query("we");
-
-    PrintResult(cout, res);
+//    PrintResult(cout, text_query.Query("we"));
 //    vector<string> temp = {"a", "b", "c", "d"};
 
 //    for_each(temp.begin(), temp.end(), [](string &p) { cout << p << endl; });
