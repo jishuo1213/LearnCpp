@@ -69,6 +69,7 @@ private:
 HasPtr &HasPtr::operator=(HasPtr has_ptr) {
     std::cout << "operator = called" << std::endl;
     swap(*this, has_ptr);
+
     return *this;
 }
 
