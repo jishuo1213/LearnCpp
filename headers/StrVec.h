@@ -20,6 +20,7 @@ public:
     }
 
     StrVec(initializer_list<string> sl) {
+        cout << "initalizer list" << endl;
         auto first = alloc.allocate(sl.size() * 2);
         element = first;
         first_free = uninitialized_copy(sl.begin(), sl.end(), first);

@@ -31,6 +31,11 @@ public:
         serial_num = random_generator()();
     };
 
+    HasPtr(HasPtr &&p) noexcept : ps(p.ps), i(p.i) {
+        std::cout << "move constructor called" << std::endl;
+        p.ps = 0;
+    }
+
 
     HasPtr(const HasPtr &has_ptr) : ps(new std::string(*(has_ptr.ps))), i(has_ptr.i) {
         std::cout << "copy constructor called" << std::endl;
@@ -81,6 +86,7 @@ HasPtr::~HasPtr() {
 
 std::ostream &Print(std::ostream &os, const HasPtr &has_ptr) {
     os << has_ptr.serial_num << std::endl;
+    os << *has_ptr.ps << std::endl;
     return os;
 }
 

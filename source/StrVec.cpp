@@ -80,6 +80,7 @@ StrVec &StrVec::operator=(StrVec &rhs) {
 }
 
 StrVec &StrVec::operator=(StrVec &&rhs) {
+    cout << "Rvalue" << endl;
     if (this != &rhs) {
         free();
         element = rhs.element;

@@ -34,7 +34,7 @@ TextQuery::TextQuery(ifstream &in) : file_lines(new StrVec()) {
     cout << file_lines->size() << endl;
 }
 
-QueryResult &&TextQuery::Query(const string &s) {
+QueryResult TextQuery::Query(const string &s) {
     cout << "Query" << endl;
     static shared_ptr<set<size_t >> no_data(new set<size_t>);
     auto loc = word_lines.find(s);

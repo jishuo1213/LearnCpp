@@ -21,7 +21,7 @@ public:
 
     TextQuery(ifstream &in);
 
-    QueryResult &&Query(const string &s);
+    QueryResult Query(const string &s);
 
 private:
     shared_ptr<StrVec> file_lines;

@@ -3,11 +3,26 @@
 #include <vector>
 #include <utility>
 
+#include "headers/StrVec.h"
+#include "headers/HasPtr.h"
+
 
 using namespace std;
 
+StrVec getVec(istream &in);
 
 int main() {
+    HasPtr hp2("bbbb");
+    HasPtr hp1;
+    hp1 = hp2;
+    HasPtr hp3;
+    hp3 = move(hp2);
+    Print(cout, hp3);
+    Print(cout, hp2);
+
+//    StrVec v1;
+//    v1 = getVec(cin);
+
 
 //    ifstream in("/home/fan/WorkSpace/clion/LearnCpp/others/input");
 //    TextQuery text_query(in);
@@ -233,4 +248,9 @@ int main() {
     //    windows.clear(1);
     //    windows.print(1);
     return 0;
+}
+
+
+StrVec getVec(istream &in) {
+    return {"1", "v"};
 }
