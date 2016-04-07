@@ -26,7 +26,13 @@ public:
         addSelf(msg);
     };
 
+    Message(Message &&m) : content(std::move(m.content)) {
+        move_Folders(&m);
+    }
+
     Message &operator=(Message &rhs);
+
+    Message &operator=(Message &&rhs);
 
     ~Message() {
         delete content;
@@ -37,19 +43,21 @@ public:
 
     void remove(Folder &folder);
 
+    void move_Folders(Message *m);
+
 private:
     string *content;
     set<Folder *> parent_folders;
 
     void removeSelf() {
         for (auto pf : parent_folders) {
-            pf->remMsg(*this);
+            pf->remMsg(this);
         }
     };
 
     void addSelf(const Message &msg) {
         for (auto pf : msg.parent_folders) {
-            pf->addMsg(*this);
+            pf->addMsg(this);
         }
     }
 };
@@ -57,12 +65,12 @@ private:
 
 void Message::save(Folder &folder) {
     parent_folders.insert(&folder);
-    folder.addMsg(*this);
+    folder.addMsg(this);
 }
 
 void Message::remove(Folder &folder) {
     parent_folders.erase(&folder);
-    folder.remMsg(*this);
+    folder.remMsg(this);
 }
 
 Message &Message::operator=(Message &rhs) {
@@ -84,5 +92,24 @@ void swap(Message &lhs, Message &rhs) {
     lhs.addSelf(lhs);
     rhs.addSelf(rhs);
 }
+
+void Message::move_Folders(Message *m) {
+    parent_folders = std::move(m->parent_folders);
+    for (auto f : parent_folders) {
+        f->remMsg(m);
+        f->addMsg(m);
+    }
+    m->parent_folders.clear();
+}
+
+Message &Message::operator=(Message &&rhs) {
+    if (this != &rhs) {
+        removeSelf();
+        content = std::move(rhs.content);
+        move_Folders(&rhs);
+    }
+    return *this;
+}
+
 
 #endif //LEARNCPP_MESSAGE_H

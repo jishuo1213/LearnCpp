@@ -10,16 +10,17 @@ class Message;
 class Folder {
 
 public:
-    void addMsg(Message &msg);
-    void remMsg(Message &msg);
+    void addMsg(Message *msg);
+
+    void remMsg(Message *msg);
 };
 
 
-void Folder::addMsg(Message &msg) {
+void Folder::addMsg(Message *msg) {
 
 }
 
-void Folder::remMsg(Message &msg) {
+void Folder::remMsg(Message *msg) {
 
 }
 
