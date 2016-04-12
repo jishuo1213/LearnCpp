@@ -41,6 +41,8 @@ public:
 
     void push_back(const string &str);
 
+    void push_back(string &&str);
+
     size_t size() const;
 
     size_t capacity() const;

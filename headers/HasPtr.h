@@ -44,7 +44,9 @@ public:
 
 //    HasPtr &operator=(const HasPtr &has_ptr);
 
-    HasPtr &operator=(HasPtr has_ptr);
+    HasPtr &operator=(const HasPtr &has_ptr);
+
+    HasPtr &operator=(HasPtr &&rhs);
 
     bool operator<(const HasPtr &has_ptr);
 
@@ -56,7 +58,7 @@ private:
     uuid serial_num;
 };
 
-/*HasPtr &HasPtr::operator=(const HasPtr &has_ptr) {
+HasPtr &HasPtr::operator=(const HasPtr &has_ptr) {
     std::cout << "operator = called" << std::endl;
     auto temp_str = new std::string(*has_ptr.ps);
     delete ps;
@@ -64,14 +66,14 @@ private:
     i = has_ptr.i;
     serial_num = random_generator()();
     return *this;
-}*/
+}
 
-HasPtr &HasPtr::operator=(HasPtr has_ptr) {
+
+/*HasPtr &HasPtr::operator=(HasPtr has_ptr) {
     std::cout << "operator = called" << std::endl;
     swap(*this, has_ptr);
-
     return *this;
-}
+}*/
 
 inline void swap(HasPtr &lhs, HasPtr &rhs) {
     using std::swap;
@@ -93,6 +95,17 @@ std::ostream &Print(std::ostream &os, const HasPtr &has_ptr) {
 
 bool HasPtr::operator<(const HasPtr &has_ptr) {
     return *ps < *has_ptr.ps;
+}
+
+HasPtr &HasPtr::operator=(HasPtr &&rhs) {
+    if (this != &rhs) {
+        ps = rhs.ps;
+        i = rhs.i;
+        serial_num = rhs.serial_num;
+        rhs.ps = nullptr;
+        rhs.i = 0;
+    }
+    return *this;
 }
 
 

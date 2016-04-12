@@ -9,17 +9,26 @@
 
 using namespace std;
 
-StrVec getVec(istream &in);
+StrVec &getVec(istream &in);
 
 int main() {
-    HasPtr hp2("bbbb");
-    HasPtr hp1;
-    hp1 = hp2;
-    HasPtr hp3;
-    hp3 = move(hp2);
-    Print(cout, hp3);
-    Print(cout, hp2);
+//    HasPtr hp2("bbbb");
+//    HasPtr hp1;
+//    hp1 = hp2;
+//    HasPtr hp3;
+//    hp3 = move(hp2);
+//    Print(cout, hp3);
+//    Print(cout, hp1);
 
+    pair
+
+    cout << "aaaaaaaaaaaaaaa" << endl;
+    StrVec s1;
+    cout << &getVec(cin) << endl;
+    getVec(cin) = s1;
+
+//    s1 = getVec(cin);
+//    cout << &s1 << endl;
 //    StrVec v1;
 //    v1 = getVec(cin);
 
@@ -251,6 +260,8 @@ int main() {
 }
 
 
-StrVec getVec(istream &in) {
-    return {"1", "v"};
+StrVec &getVec(istream &in) {
+    StrVec *a = new StrVec();
+    cout << &a << endl;
+    return *a;
 }
