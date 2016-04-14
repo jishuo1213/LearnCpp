@@ -16,7 +16,9 @@ public:
 
     std::string isbn() const;
 
-    virtual double net_price(std::size_t n) const = 0;
+    virtual double net_price(std::size_t n) const {
+        return n * price;
+    };
 
     virtual ~Quote() = default;
 

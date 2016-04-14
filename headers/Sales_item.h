@@ -149,6 +149,4 @@ double Sales_item::avg_price() const {
 bool operator<(const Sales_item &lhs, const Sales_item &rhs) {
     return lhs.bookNo > rhs.bookNo;
 }
-
-
 #endif
