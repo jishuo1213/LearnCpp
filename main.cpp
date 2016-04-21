@@ -1,11 +1,7 @@
 #include <iostream>
-#include <string>
-#include <vector>
-#include <utility>
 
 #include "headers/StrVec.h"
-#include "headers/HasPtr.h"
-#include "headers/IntEqual.h"
+
 
 
 using namespace std;
@@ -13,12 +9,13 @@ using namespace std;
 StrVec &getVec(istream &in);
 
 int main() {
-    negate<int> int_negate;
-    int res = int_negate(10);
-    cout << res << endl;
-    vector<int> ivec = {1, 2, 34, 5, 67, 8, 9, 423, 23, 23, 1, 4};
-    replace_all_equal_value(ivec, 1);
-    for_each(ivec.begin(), ivec.end(), [](int &i) { cout << i << endl; });
+
+//    negate<int> int_negate;
+//    int res = int_negate(10);
+//    cout << res << endl;
+//    vector<int> ivec = {1, 2, 34, 5, 67, 8, 9, 423, 23, 23, 1, 4};
+//    replace_all_equal_value(ivec, 1);
+//    for_each(ivec.begin(), ivec.end(), [](int &i) { cout << i << endl; });
 //    HasPtr hp2("bbbb");
 //    HasPtr hp1;
 //    hp1 = hp2;
@@ -32,7 +29,7 @@ int main() {
 //    cout << &getVec(cin) << endl;
 //    getVec(cin) = s1;
 
-//    s1 = getVec(cin);
+//    s1 = getVec(cin);/home/fan/workspace/LearnCpp/headers/BulkQuote.h
 //    cout << &s1 << endl;
 //    StrVec v1;
 //    v1 = getVec(cin);

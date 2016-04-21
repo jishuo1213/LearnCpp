@@ -29,6 +29,6 @@ set(SOURCE_FILES
         headers/Folder.h
         source/TextQuery.cpp
         headers/TextQuery.h
-        headers/QueryResult.h source/StrVec.cpp headers/StrVec.h)
+        headers/QueryResult.h source/StrVec.cpp headers/StrVec.h headers/Basket.h)
 
 add_executable(LearnCpp ${SOURCE_FILES})
