@@ -1,15 +1,36 @@
 #include <iostream>
 
-#include "headers/StrVec.h"
+#include <iostream>
+#include <string>
+#include <vector>
+#include <memory>
+#include <fstream>
 
+#include "headers/quote.h"
+#include "headers/bulk_quote.h"
+#include "headers/basket.h"
 
 
 using namespace std;
 
-StrVec &getVec(istream &in);
 
 int main() {
 
+
+    Basket basket;
+
+    for (unsigned i = 0; i != 10; ++i)
+        basket.add_item(Bulk_quote("Bible", 20.6, 20, 0.3));
+
+    for (unsigned i = 0; i != 10; ++i)
+        basket.add_item(Bulk_quote("C++Primer", 30.9, 5, 0.4));
+
+    for (unsigned i = 0; i != 10; ++i)
+        basket.add_item(Quote("CLRS", 40.1));
+
+    std::ofstream log("log.txt", std::ios_base::app|std::ios_base::out);
+
+    basket.total_receipt(log);
 //    negate<int> int_negate;
 //    int res = int_negate(10);
 //    cout << res << endl;
@@ -259,11 +280,4 @@ int main() {
     //    windows.clear(1);
     //    windows.print(1);
     return 0;
-}
-
-
-StrVec &getVec(istream &in) {
-    StrVec *a = new StrVec();
-    cout << &a << endl;
-    return *a;
 }
